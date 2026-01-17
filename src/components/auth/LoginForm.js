@@ -237,9 +237,8 @@ export default function LoginForm() {
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-2 mb-8 overflow-hidden">
             <div
-              className={`h-full bg-gradient-to-r from-emerald-500 to-teal-600 transition-all duration-500 ease-in-out rounded-full ${
-                step === 2 ? "w-full" : "w-1/2"
-              }`}
+              className={`h-full bg-gradient-to-r from-emerald-500 to-teal-600 transition-all duration-500 ease-in-out rounded-full ${step === 2 ? "w-full" : "w-1/2"
+                }`}
             />
           </div>
 
