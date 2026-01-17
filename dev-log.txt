@@ -1,0 +1,9 @@
+npx create-next-app@latest ./
+npm install react-icons
+npm install @reduxjs/toolkit
+npm install react-redux
+npm install sweetalert2
+
+npx shadcn@latest init
+npx shadcn@latest add select
++85587999887
