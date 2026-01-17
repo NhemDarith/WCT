@@ -1,13 +1,26 @@
 import { createClient } from "@supabase/supabase-js";
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+let supabase = null;
 
-console.log("SUPABASE_URL:", SUPABASE_URL);
-console.log("SUPABASE_KEY exists:", !!SUPABASE_KEY);
+export function getSupabase() {
+  if (supabase) return supabase;
 
-if (!SUPABASE_URL || !SUPABASE_KEY) {
-  throw new Error("Missing Supabase environment variables. Please check your .env.local file.");
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!url || !key) {
+    throw new Error(
+      "Supabase env vars missing. Locally: .env.local. On Vercel: Project Settings → Environment Variables."
+    );
+  }
+
+  supabase = createClient(url, key, {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: true,
+    },
+  });
+
+  return supabase;
 }
-
-export const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
