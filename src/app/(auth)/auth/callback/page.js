@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/app/supabase";
+import { supabase } from "@/lib/supabase";
 import Spinner from "@/components/spinner";
 
 
